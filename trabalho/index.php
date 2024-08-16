@@ -1,5 +1,5 @@
 <?php require_once('inc/topo.php');
-
+session_start();
 $_SESSION['product-name'] = 'Placa de Vídeo Asus Dual NVIDIA GeForce RTX 2070 EVO V2 OC Edition, 8GB, GDDR6';
 $_SESSION['product-price'] = 2949.90;
 
@@ -10,11 +10,24 @@ if (!isset($_SESSION['qtde_pedido_item'])) {
 // Verifica se o botão de incremento ou decremento foi clicado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    if (isset($_POST['incrementar'])) {
-      echo $_SESSION['qtde_pedido_item'];
+      
       $_SESSION['qtde_pedido_item']++; // Incrementa o contador
+      
    } elseif (isset($_POST['decrementar'])) {
-      $_SESSION['qtde_pedido_item']--; // Decrementa o contador
+      if( $_SESSION['qtde_pedido_item'] > 1){
+         $_SESSION['qtde_pedido_item']--; // Decrementa o contador
+      }
+      
    }
+}
+
+if(isset( $_REQUEST['acao'] ) && $_REQUEST['acao'] == 'delete'){
+   unset($_SESSION);
+
+   $_SESSION['delete'] = false;
+
+}else{
+   $_SESSION['delete'] = true;
 }
 
 ?>
@@ -37,6 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                               </tr>
                            </thead>
                            <tbody>
+                              <?php if($_SESSION['delete']){?>
                               <tr>
                                  <td class="product-thumbnail"><a href=""><img src="http://localhost/ifc/trabalho/img/produto.jpg" alt="Placa de Vídeo Asus Dual NVIDIA GeForce RTX 2070 EVO V2 OC Edition, 8GB, GDDR6"></a></td>
                                  <td class="product-name" data-title="Product"><a href=""><?=$_SESSION['product-name']?></a></td>
@@ -51,8 +65,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     </div>
                                  </td>
                                  <td class="product-subtotal" data-title="Total">R$ 2.949,90</td>
-                                 <td class="product-remove qtde" tipo="remove" id_produto="5" data-title="Remove"><a href="#">X</a></td>
+                                 <td class="product-remove qtde" tipo="remove" id_produto="5" data-title="Remove"><a href="?acao=delete">X</a></td>
                               </tr>
+                              <?php } ?>
                            </tbody>
                            <tfoot>
                               <tr>
