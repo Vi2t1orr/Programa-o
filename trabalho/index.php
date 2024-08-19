@@ -29,7 +29,10 @@ if(isset( $_REQUEST['acao'] ) && $_REQUEST['acao'] == 'delete'){
 }else{
    $_SESSION['delete'] = true;
 }
-
+$_SESSION['product-subtotal'] =  $_SESSION['product-price'] *  $_SESSION['qtde_pedido_item'];
+if (isset($_SESSION['product-remove'])){
+   $_SESSION['qtde_pedido_item'] = 1;
+}
 ?>
      
       <div class="main_content">
@@ -64,7 +67,7 @@ if(isset( $_REQUEST['acao'] ) && $_REQUEST['acao'] == 'delete'){
                                        </form>
                                     </div>
                                  </td>
-                                 <td class="product-subtotal" data-title="Total">R$ 2.949,90</td>
+                                 <td class="product-subtotal" data-title="Total">R<a href=""><?=$_SESSION['product-name']?></a></td>
                                  <td class="product-remove qtde" tipo="remove" id_produto="5" data-title="Remove"><a href="?acao=delete">X</a></td>
                               </tr>
                               <?php } ?>
