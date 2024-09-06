@@ -1,4 +1,44 @@
-<?php require_once('inc/topo.php');?>
+<?php require_once('inc/topo.php');
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+   if (isset($_POST['nome_cliente'])) {
+      $_SESSION['nome_cliente'] = $_POST['nome_cliente'];
+   }
+
+   if (isset($_POST['sobrnome_cliente'])){
+      $_SESSION['sobrenome_cliente'] = $_POST['sobrenome_cliente'];
+   }
+
+   if (isset($_POST['cpf_cliente'])) {
+      $_SESSION['cpf_cliente'] = $_POST['cpf_cliente'];
+   }
+   
+   if (isset($_POST['telefone_cliente'])) {
+      $_SESSION['telefone_cliente'] = $_POST['telefone_cliente'];
+   }
+
+   if (isset($_POST['whats_cliente'])) {
+      $_SESSION['whats_cliente'] = $_POST['whats_cliente'];
+   }
+
+   if (isset($_POST['email_cliente'])) {
+      $_SESSION['email_cliente'] = $_POST['email_cliente'];
+   }
+
+   if (isset($_POST['telefone_cliente'])) {
+      $_SESSION['telefone_cliente'] = $_POST['telefone_cliente'];
+   }
+   if (isset($_POST['endereco_cliente'])) {
+      $_SESSION['endereco_cliente'] = $_POST['endereco_cliente'];
+   }
+   if (isset($_POST['senha_cliente'])) {
+      $_SESSION['senha_cliente'] = $_POST['senha_cliente'];
+   }
+   header("Location: login.php");
+}
+?>
       <div class="main_content">
          <div class="login_register_wrap section">
             <div class="container">
@@ -21,7 +61,7 @@
                               </div>
                               <div class="form-group">
                                  <label>Telefone</label>
-                                 <input type="text" name="fone_cliente" id="fone_cliente" class="form-control fone" value="" maxlength="14">
+                                 <input type="text" name="telefone_cliente" id="telefone_cliente" class="form-control fone" value="" maxlength="14">
                               </div>
                               <div class="form-group">
                                  <label>Whats</label>
@@ -33,7 +73,7 @@
                               </div>
                               <div class="form-group">
                                  <label>Senha</label>
-                                 <input type="password" required="" name="cliente_senha" id="cliente_senha" class="form-control" value="">
+                                 <input type="password" required="" name="senha_cliente" id="senha_cliente" class="form-control" value="">
                               </div>
                               <div class="login_footer form-group">
                                  <div class="chek-form">
@@ -43,7 +83,7 @@
                                  </div>
                               </div>
                               <div class="form-group">
-                                 <button type="submit" class="btn btn-fill-out btn-block" name="register">Cadastre-se</button>
+                              <button type="submit" class="btn btn-fill-out">Criar Conta</button>
                               </div>
                            </form>
                          </div>
