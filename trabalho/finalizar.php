@@ -1,4 +1,6 @@
-<?php require_once('inc/topo.php');?>
+<?php require_once('inc/topo.php');
+session_start();
+?>
       <div class="main_content">
          <!-- START SECTION SHOP -->
          <div class="section">
@@ -102,7 +104,7 @@
                                  <tbody>
                                     <tr>
                                        <td class="product-name" data-title="Product"><a href="">Placa de Vídeo Asus Dual NVIDIA GeForce RTX 2070 EVO V2 OC Edition, 8GB, GDDR6 <strong> x 1</strong></a></td>
-                                       <td class="product-subtotal" data-title="Total">2.949,90</td>
+                                       <td class="product-subtotal" data-title="Total">R$ <?= ($_SESSION['qtde_pedido_item'] * $_SESSION['product-price'])?></td>
                                     </tr>
                                  </tbody>
                               </table>

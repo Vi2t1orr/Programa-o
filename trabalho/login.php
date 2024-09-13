@@ -1,5 +1,11 @@
 <?php require_once('inc/topo.php');
 session_start();
+
+if ($_SESSION['logado'] === true) {
+      
+   header("Location: finalizar.php");
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
    $a = false;
@@ -19,10 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $b = false;
    }
 
-   if($a === true && $b === true){
-      header("Location: finalizar.php");
-   }
+
 }
+
 ?>
       <div class="main_content">
          <div class="login_register_wrap section">
@@ -45,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                               </div>
                               
                               <div class="form-group">
-                                 <button type="submit" class="btn btn-fill-out">Acessar</button>
+                                 <button type="submit" name="acesso" class="btn btn-fill-out">Acessar</button>
                               </div>
                               
                            </form>
